@@ -9,7 +9,7 @@ fn main() {
     x = 6;
 
     //shadowing (reuse of x with declaration of 'let')
-    let x = x + 1
+    let x = x + 1;
 
     //change of scope
     {
