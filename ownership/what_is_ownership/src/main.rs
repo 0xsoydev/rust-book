@@ -23,7 +23,7 @@ fn main() {
     //This works without calling clone because integers have a fixed size known at compile time
     //unlike strings, so integers are stored on stack unlike strings which are stored on heap
     //(due to unknown size at compile time)
-    let x = 2;
+    let x = 1;
     let y = x;
     println!("{y}");
 
