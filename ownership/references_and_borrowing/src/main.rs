@@ -9,7 +9,7 @@ fn main() {
     //string
     // let immut_str = String::from("This is an immutable string");
     // mod_str(&immut_str);
-    
+
     let mut mut_str = String::from("This is a mutable string");
     mod_str(&mut mut_str);
     println!("{mut_str}");
@@ -42,4 +42,3 @@ fn mod_str(some_str: &mut String) {
 //     let s = String::from("This is a str");
 //     &s
 // } // s goes out of scope here
-
