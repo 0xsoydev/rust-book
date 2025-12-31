@@ -1,6 +1,7 @@
-use std::fs;
+use std::error::Error;
 use std::fs::File;
 use std::io::{self, ErrorKind, Read};
+use std::{char, fs};
 
 fn main() {
     let greeting_file_result = File::open("src/hello.txt");
@@ -93,5 +94,27 @@ fn main() {
 
     fn read_file_method() -> Result<String, io::Error> {
         fs::read_to_string("hello.txt")
+    }
+
+    //This function will panic because it doesn't have a compatible return type the ? operator
+    //supports
+
+    //fn panic_read_file() {
+    //    let greeting_file = File::open("hello.txt")?;
+    //}
+
+    //The ? operator here works out because it needs either Result<T, E> or Option<T> to propogate
+    //a result back to the calling function or else it panics
+
+    fn last_char_of_first_line(text: &str) -> Option<char> {
+        text.lines().next()?.chars().last()
+    }
+
+    // Another option is to use `dyn` if the type of error is unknown, inside a Box so it's memory
+    // allocation for the error is calculated in the heap, realtime during complilation,
+
+    fn dyn_error() -> Result<(), Box<dyn Error>> {
+        let greeting_file = File::open("hello.txt")?;
+        Ok(())
     }
 }
